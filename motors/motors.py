@@ -1,5 +1,4 @@
 import serial
-import struct
 
 data = serial.Serial('com5', 115200, timeout=1)       # Start the serial port to communicate with arduino
 
