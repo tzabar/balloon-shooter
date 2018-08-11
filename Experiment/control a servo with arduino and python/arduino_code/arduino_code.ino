@@ -1,6 +1,6 @@
 #include <Servo.h> //include the servo library
  
-int pos=90; //declare initial position of the servo
+float pos=0; //declare initial position of the servo
 int servoPin = 9; //declare pin for the servo
 int servoDelay =15; //delay to allow the servo to reach position;
  
@@ -13,7 +13,8 @@ void setup() {
  
 void loop() {
   while(Serial.available()==0){}; //wait until information is received from the serial port
-  pos = Serial.read(); //read the position from the servo
+  pos = Serial.parseFloat(); //read the position from the servo
+  Serial.println(pos);
   myServo.write(pos); //write the position into the servo
   delay(servoDelay); //give time to the servo to reach the position
 }

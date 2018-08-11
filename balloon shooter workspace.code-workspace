@@ -4,7 +4,8 @@
 			"path": "."
 		},
 		{
-			"path": "C:\\Users\\Nasich\\Documents\\RealSense\\from GIT\\wrappers\\python\\examples"
+			"path": "C:\\Users\\Nasich\\Documents\\librealsense",
+			"name": "librealsense"
 		}
 	],
 	"settings": {}
