@@ -6,6 +6,10 @@
 		{
 			"path": "C:\\Users\\Nasich\\Documents\\librealsense",
 			"name": "librealsense"
+		},
+		{
+			"path": "opencv",
+			"name": "opencv"
 		}
 	],
 	"settings": {}
