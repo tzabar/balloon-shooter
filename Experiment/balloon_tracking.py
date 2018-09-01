@@ -10,6 +10,17 @@ import argparse
 import cv2
 import imutils
 import time
+import serial
+
+
+def control_motors(x_axis, y_axis):
+	data = serial.Serial('com10', 115200, timeout=1)	# Start the serial port to communicate with arduino
+	while (True):                                       # infinite while loop to keep the program running
+		#x_axis = input("Enter x axis: ")               # Prompt the user for x angle
+		#y_axis = input("Enter y axis: ")               # Prompt the user for y angle
+		
+		data.write((x_axis + ',' + y_axis).encode())	# send the angle to the Arduino through serial port
+
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -110,6 +121,14 @@ while True:
 	# show the frame to our screen
 	cv2.imshow("Frame", frame)
 	key = cv2.waitKey(1) & 0xFF
+
+
+	#if len(cnts) > 100:
+	#if center:
+	#	new_x=center[0]-170
+		#new_y=center[1]-240
+		#control_motors(str(new_x),str(new_y))
+		#print(new_x,new_y)
 
 	# if the 'q' key is pressed, stop the loop
 	if key == ord("q"):
