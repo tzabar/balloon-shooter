@@ -10,6 +10,10 @@
 		{
 			"path": "opencv",
 			"name": "opencv"
+		},
+		{
+			"path": "C:\\Users\\Nasich\\Documents\\ardupilot-balloon-finder",
+			"name": "ardupilot-balloon-finder"
 		}
 	],
 	"settings": {}
