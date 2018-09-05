@@ -10,13 +10,12 @@ import argparse
 import cv2
 import imutils
 import time
+import motors.motors
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-v", "--video",
-	help="path to the (optional) video file")
-ap.add_argument("-b", "--buffer", type=int, default=64,
-	help="max buffer size")
+ap.add_argument("-v", "--video", help="path to the (optional) video file")
+ap.add_argument("-b", "--buffer", type=int, default=64, help="max buffer size")
 args = vars(ap.parse_args())
 
 # define the lower and upper boundaries of the "green"
@@ -30,7 +29,7 @@ pts = deque(maxlen=args["buffer"])
 # to the webcam
 if not args.get("video", False):
 	vs = VideoStream(src=0).start()
-else:# otherwise, grab a reference to the video file
+else:  # otherwise, grab a reference to the video file
 	vs = cv2.VideoCapture(args["video"])
 
 # allow the camera or video file to warm up
@@ -64,8 +63,7 @@ while True:
 
 	# find contours in the mask and initialize the current
 	# (x, y) center of the ball
-	cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
-		cv2.CHAIN_APPROX_SIMPLE)
+	cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 	cnts = cnts[0] if imutils.is_cv2() else cnts[1]
 	center = None
 
@@ -83,8 +81,7 @@ while True:
 		if radius > 10:
 			# draw the circle and centroid on the frame,
 			# then update the list of tracked points
-			cv2.circle(frame, (int(x), int(y)), int(radius),
-				(0, 255, 255), 2)
+			cv2.circle(frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
 			cv2.circle(frame, center, 5, (0, 0, 255), -1)
 
 	# update the points queue
